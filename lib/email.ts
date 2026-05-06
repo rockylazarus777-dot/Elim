@@ -132,7 +132,7 @@ export function userEmailTemplate(p: EnquiryPayload) {
       </table>
       <p style="margin:24px 0 0 0;font-size:14px;line-height:1.6;color:#444;">
         In the meantime, you can also reach us on WhatsApp at
-        <a href="https://wa.me/${SITE.whatsapp}" style="color:${BRAND_ACCENT};text-decoration:none;">+91 6374741590</a>.
+        <a href="https://wa.me/${SITE.whatsapp}" style="color:${BRAND_ACCENT};text-decoration:none;">+91 9600822491</a>.
       </p>`,
     ctaLabel: 'Visit our website',
     ctaHref: SITE.url,

@@ -34,7 +34,7 @@ export const SITE = {
   address:
     'No. 24, Thiruvallurpuram 2nd Street, Choolaimedu, Chennai – 600094',
   gst: '33FVOPP3191K1ZY',
-  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '916374741590',
+  whatsapp: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || '919600822491',
   socials: {
     facebook: 'https://facebook.com/elimmedicalconsultants',
     instagram: 'https://instagram.com/elimmedicalconsultants',

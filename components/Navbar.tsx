@@ -64,7 +64,7 @@ export default function Navbar() {
 
         <div className="hidden items-center gap-2 lg:flex">
           <Button asChild variant="outline" size="sm">
-            <a href="tel:+916374741590" aria-label="Call Elim Medical">
+            <a href="tel:+919600822491" aria-label="Call Elim Medical">
               <Phone className="h-4 w-4" />
               Call us
             </a>
@@ -107,7 +107,7 @@ export default function Navbar() {
               ))}
               <div className="mt-2 grid grid-cols-2 gap-2">
                 <Button asChild variant="outline">
-                  <a href="tel:+916374741590">Call us</a>
+                  <a href="tel:+919600822491">Call us</a>
                 </Button>
                 <Button asChild>
                   <Link href="/#contact" onClick={() => setOpen(false)}>

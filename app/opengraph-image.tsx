@@ -93,7 +93,7 @@ export default async function OG() {
           >
             www.emcforyou.com
           </div>
-          <div style={{ fontSize: 20, opacity: 0.8 }}>+91 6374 741 590</div>
+          <div style={{ fontSize: 20, opacity: 0.8 }}>+91 9600 822 491</div>
         </div>
       </div>
     ),
