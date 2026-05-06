@@ -1,0 +1,11 @@
+{
+  "name": "Elim Medical Consultancy",
+  "short_name": "EMC",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ],
+  "theme_color": "#0B3C5D",
+  "background_color": "#FFFFFF",
+  "display": "standalone",
+  "start_url": "/"
+}

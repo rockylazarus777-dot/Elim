@@ -1,0 +1,31 @@
+<svg viewBox="0 0 1200 630" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#0B3C5D"/>
+      <stop offset="100%" stop-color="#1D70B8"/>
+    </linearGradient>
+    <linearGradient id="logoG" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#E6F0FA"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <circle cx="1050" cy="100" r="180" fill="#FFFFFF" opacity="0.06"/>
+  <circle cx="100" cy="540" r="220" fill="#FFFFFF" opacity="0.05"/>
+
+  <g transform="translate(80,80)">
+    <rect width="80" height="80" rx="20" fill="url(#logoG)"/>
+    <path d="M40 19c-7.2 0-13 5.8-13 13 0 9.8 13 22 13 22s13-12.2 13-22c0-7.2-5.8-13-13-13z" fill="#0B3C5D"/>
+    <path d="M34 32h4v-4h4v4h4v4h-4v4h-4v-4h-4z" fill="#FFFFFF"/>
+  </g>
+
+  <text x="80" y="240" font-family="Inter, Arial, sans-serif" font-weight="600" font-size="22" letter-spacing="6" fill="#9DC4E5">ELIM MEDICAL CONSULTANCY</text>
+  <text x="80" y="340" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="78" fill="#FFFFFF">Bridging Care,</text>
+  <text x="80" y="430" font-family="Inter, Arial, sans-serif" font-weight="800" font-size="78" fill="#9DC4E5">Accelerating Growth</text>
+  <text x="80" y="500" font-family="Inter, Arial, sans-serif" font-weight="500" font-size="28" fill="#D7E6F3">Hospital growth partner — Patient flow · Operations · NABH</text>
+
+  <g transform="translate(80,560)">
+    <rect width="220" height="42" rx="21" fill="#FFFFFF"/>
+    <text x="110" y="28" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-weight="700" font-size="16" fill="#0B3C5D">www.emcforyou.com</text>
+  </g>
+</svg>

@@ -1,0 +1,53 @@
+{
+  "name": "elim-medical-consultancy",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Elim Medical Consultancy (EMC) — Hospital growth partner website",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint",
+    "export:enquiries": "tsx scripts/export-enquiries.ts"
+  },
+  "dependencies": {
+    "@hookform/resolvers": "^3.9.0",
+    "@lottiefiles/react-lottie-player": "^3.5.4",
+    "@radix-ui/react-dialog": "^1.1.2",
+    "@radix-ui/react-label": "^2.1.0",
+    "@radix-ui/react-slot": "^1.1.0",
+    "@radix-ui/react-toast": "^1.2.2",
+    "@supabase/supabase-js": "^2.45.4",
+    "class-variance-authority": "^0.7.0",
+    "clsx": "^2.1.1",
+    "framer-motion": "^11.5.4",
+    "lucide-react": "^0.445.0",
+    "next": "14.2.13",
+    "nodemailer": "^6.9.15",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-google-recaptcha": "^3.1.0",
+    "react-hook-form": "^7.53.0",
+    "tailwind-merge": "^2.5.2",
+    "tailwindcss-animate": "^1.0.7",
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.5.5",
+    "@types/nodemailer": "^6.4.16",
+    "@types/react": "^18.3.5",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-google-recaptcha": "^2.1.9",
+    "autoprefixer": "^10.4.20",
+    "dotenv": "^16.4.5",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "14.2.13",
+    "postcss": "^8.4.47",
+    "tailwindcss": "^3.4.12",
+    "tsx": "^4.19.1",
+    "typescript": "^5.6.2"
+  },
+  "engines": {
+    "node": ">=18.17.0"
+  }
+}
