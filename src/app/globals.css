@@ -1,0 +1,210 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Fraunces", Georgia, serif;
+  --font-sans: "IBM Plex Sans", system-ui, -apple-system, sans-serif;
+  /* Overwritten with the header's real measured height (see Header.tsx); this is
+     just the pre-hydration/no-JS fallback, matching the header's h-16. */
+  --navbar-h: 4rem;
+}
+
+@layer base {
+  * {
+    @apply border-ink-100;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  body {
+    @apply bg-white text-ink-800 font-sans antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display text-ink-900;
+  }
+
+  a {
+    @apply underline-offset-4;
+  }
+
+  ::selection {
+    @apply bg-brand-200 text-ink-900;
+  }
+
+  /* Strong, visible focus states everywhere (WCAG) */
+  :focus-visible {
+    outline: 2px solid theme("colors.brand.600");
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply container;
+  }
+
+  .skip-link {
+    @apply sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100]
+      focus:rounded-lg focus:bg-ink-900 focus:px-4 focus:py-3 focus:text-sm focus:font-medium focus:text-white;
+  }
+
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold
+      transition-all duration-300 ease-out disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-primary {
+    @apply btn bg-brand-700 text-white shadow-card hover:bg-brand-600 hover:shadow-card-hover active:bg-brand-800;
+  }
+
+  .btn-secondary {
+    @apply btn bg-white text-ink-900 ring-1 ring-inset ring-ink-200 hover:ring-ink-300 hover:bg-ink-50;
+  }
+
+  .btn-ghost {
+    @apply btn text-ink-800 hover:bg-ink-100;
+  }
+
+  .eyebrow {
+    @apply inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-brand-700;
+  }
+
+  .card {
+    @apply rounded-2xl bg-white ring-1 ring-ink-100 shadow-card transition-shadow duration-300 hover:shadow-card-hover;
+  }
+
+  .prose-content {
+    @apply max-w-prose text-[1.05rem] leading-relaxed text-ink-700;
+  }
+
+  .prose-content p + p {
+    @apply mt-4;
+  }
+
+  .prose-content h2 {
+    @apply mt-12 text-display-md font-display text-ink-900;
+  }
+
+  .prose-content h3 {
+    @apply mt-8 text-xl font-semibold text-ink-900;
+  }
+
+  .prose-content ul {
+    @apply mt-4 list-disc space-y-2 pl-5;
+  }
+
+  .prose-content a {
+    @apply font-medium text-brand-700 hover:text-brand-800;
+  }
+
+  /* Scroll-reveal: JS adds `.is-visible` via IntersectionObserver (see components/shared/Reveal.tsx).
+     Starts fully visible with no motion if JS hasn't run yet or reduced-motion is on. */
+  .reveal {
+    @apply opacity-0 translate-y-7 transition-[opacity,transform] duration-700 ease-out;
+  }
+  .reveal.is-visible {
+    @apply opacity-100 translate-y-0;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .reveal {
+      @apply opacity-100 translate-y-0;
+    }
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .link-underline {
+    @apply relative inline-block;
+    background-image: linear-gradient(currentColor, currentColor);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    background-size: 0% 1px;
+    transition: background-size 300ms theme("transitionTimingFunction.out");
+  }
+  .link-underline:hover,
+  .link-underline:focus-visible {
+    background-size: 100% 1px;
+  }
+
+  .arrow-move {
+    @apply transition-transform duration-300 ease-out;
+  }
+  .group:hover .arrow-move,
+  .group:focus-visible .arrow-move {
+    transform: translateX(6px);
+  }
+
+  .img-zoom {
+    @apply transition-transform duration-[600ms] ease-out;
+  }
+  .group:hover .img-zoom,
+  .group:focus-visible .img-zoom {
+    transform: scale(1.045);
+  }
+
+  /* Fills exactly the viewport height left over below the (in-flow, sticky) header,
+     so header + hero together are never taller than 100dvh. */
+  .hero-viewport-fit {
+    height: calc(100dvh - var(--navbar-h, 4rem));
+    min-height: 320px;
+  }
+}
+
+/* ServicesEcosystem's intro sequence drives opacity/scale/blur/stroke via
+   raw per-frame inline styles (not CSS transitions), so the sitewide
+   `transition-duration: 0.01ms` reduced-motion rule above can't neutralize
+   it. This forces the assembled end-state instantly, independent of JS/rAF
+   timing, so there's no flash of the pre-animation pose either. */
+@media (prefers-reduced-motion: reduce) {
+  .eco-hub,
+  .eco-sector,
+  .eco-line,
+  .eco-ring,
+  .eco-particle {
+    opacity: 1 !important;
+    filter: none !important;
+  }
+  .eco-hub {
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+  .eco-sector {
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+  .eco-line {
+    stroke-dashoffset: 0 !important;
+  }
+  .eco-ring,
+  .eco-particle {
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+  .eco-cta {
+    opacity: 1 !important;
+    transform: translateY(0) !important;
+    pointer-events: auto !important;
+  }
+}
