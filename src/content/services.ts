@@ -100,6 +100,20 @@ export const services: ServiceContent[] = [
       note: "Indicative only, when required documents and facility readiness are in place. Actual completion depends on the applicable process, supporting approvals, inspections and authority processing.",
     },
     scopeNote: "EMC does not issue or guarantee registration. Registrations and approvals are issued by the relevant authorities.",
+    audienceGroups: [
+      { title: "Hospitals & Nursing Homes", detail: "Hospitals and nursing homes" },
+      { title: "Clinics & Polyclinics", detail: "General and specialty clinics; polyclinics and multispeciality centres" },
+      { title: "Diagnostic Centres & Laboratories", detail: "Diagnostic centres and laboratories" },
+      { title: "Dental, Physiotherapy & Specialty Centres", detail: "Dental clinics; physiotherapy centres" },
+      { title: "Other Healthcare Establishments", detail: "Other healthcare establishments" },
+    ],
+    benefitCards: [
+      { title: "Regulatory Compliance", detail: "Regulatory compliance for the establishment" },
+      { title: "Defined Facility Scope", detail: "Formal identification and defined scope of services for the facility" },
+      { title: "Structured Documentation", detail: "Structured documentation of the services offered, and maintenance of the records regulators expect to see" },
+      { title: "Inspection Readiness", detail: "Inspection and audit readiness" },
+      { title: "Organisational Credibility", detail: "Credibility with patients, insurers and partners" },
+    ],
   },
   {
     slug: "drug-licence",
@@ -227,6 +241,12 @@ export const services: ServiceContent[] = [
     keywords: ["biomedical waste management hospital", "BMW authorization clinic", "hospital waste segregation compliance"],
     scopeNote:
       "Regulatory authorization and waste collection/vendor arrangements are distinct — collection, transportation, treatment and disposal are carried out by the authorized service provider. EMC does not automatically include bins, bags or staff training unless specifically agreed.",
+    audienceGroups: [
+      { title: "Hospitals & Nursing Homes", detail: "Hospitals; nursing homes" },
+      { title: "Clinics", detail: "Clinics" },
+      { title: "Diagnostic Centres & Laboratories", detail: "Diagnostic centres; laboratories" },
+      { title: "Other Applicable Establishments", detail: "Other applicable healthcare establishments" },
+    ],
   },
   {
     slug: "fire-safety",
@@ -460,6 +480,13 @@ export const services: ServiceContent[] = [
       note: "Preparation timeline depends on the facility's starting point, size and readiness.",
     },
     scopeNote: "EMC does not guarantee NABH accreditation. The final accreditation decision belongs to NABH.",
+    benefitCards: [
+      { title: "Structured Quality Systems", detail: "Structured quality systems across the facility, with incident reporting, audits and patient feedback built into daily practice" },
+      { title: "Patient Safety & Rights", detail: "Stronger patient safety and patient-rights practices" },
+      { title: "Medication & Infection Control", detail: "Better, more consistent medication management and infection prevention" },
+      { title: "Documentation & Records", detail: "Medical-records documentation aligned to accreditation requirements" },
+      { title: "Staff Readiness & Improvement", detail: "Staff awareness, training and emergency preparedness — continual improvement, not a one-time inspection" },
+    ],
   },
   {
     slug: "nabl-accreditation",

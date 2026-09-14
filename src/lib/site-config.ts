@@ -56,11 +56,11 @@ export const siteConfig = {
 
   serviceAreas: ["India"],
 
-  // PLACEHOLDER — no social profiles have been provided yet.
+  // YouTube not yet supplied — remains a placeholder until provided.
   social: {
-    linkedin: "",
-    facebook: "",
-    instagram: "",
+    linkedin: "https://www.linkedin.com/company/elim-medical-consultancy/",
+    facebook: "https://www.facebook.com/share/1Ei1fhjhPU/",
+    instagram: "https://www.instagram.com/emc_healthcareservice?stkn=MXRnNHNuZW5odzc3Nw==",
     youtube: "",
   },
 

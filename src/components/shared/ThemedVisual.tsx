@@ -16,6 +16,12 @@ interface ThemedVisualProps {
   sizes?: string;
   /** Hide the icon badge (useful for large full-width story sections where it would compete with overlaid text). */
   hideIcon?: boolean;
+  /** Extra classes merged onto the photo's own <Image> — e.g. a non-default `object-[...]` position, so the same source photo can be framed differently in two places (container `className` still controls sizing/aspect ratio). */
+  imageClassName?: string;
+  /** `"cover"` (default, matches every existing caller) crops to fill the container; `"contain"` shows the complete image with no cropping, letterboxing inside the container instead — use when preserving full composition matters more than filling every pixel. */
+  objectFit?: "cover" | "contain";
+  /** Bypasses Next's `/_next/image` optimizer, serving the source file directly. A handful of source PNGs (confirmed via direct testing — the file itself is valid, `curl` fetches it fine) never finish loading through the optimizer in-browser for reasons that don't reproduce outside it; this is the same targeted workaround already used elsewhere in the project for that exact failure mode. */
+  unoptimized?: boolean;
 }
 
 /**
@@ -40,10 +46,14 @@ export default function ThemedVisual({
   priority = false,
   sizes = "(min-width: 1024px) 50vw, 100vw",
   hideIcon = false,
+  imageClassName = "",
+  objectFit = "cover",
+  unoptimized = false,
 }: ThemedVisualProps) {
   const theme = getFamilyTheme(family);
 
   if (photoSrc) {
+    const objectFitClass = objectFit === "contain" ? "object-contain" : "object-cover";
     return (
       <div className={`relative overflow-hidden ${className}`}>
         <Image
@@ -52,7 +62,8 @@ export default function ThemedVisual({
           fill
           sizes={sizes}
           priority={priority}
-          className="img-zoom object-cover"
+          unoptimized={unoptimized}
+          className={`img-zoom ${objectFitClass} ${imageClassName}`}
         />
       </div>
     );

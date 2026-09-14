@@ -217,12 +217,12 @@ export default function AboutPage() {
               <Reveal key={leader.name} delay={index * 100}>
                 <div className={`flex flex-col gap-6 sm:flex-row sm:gap-10 ${index % 2 === 1 ? "sm:flex-row-reverse" : ""}`}>
                   {leader.photoSrc ? (
-                    <div className="relative h-40 w-40 shrink-0 overflow-hidden rounded-2xl border border-ink-200">
+                    <div className="relative aspect-[1103/1426] w-40 shrink-0 overflow-hidden rounded-2xl border border-ink-200 sm:w-48 lg:w-56">
                       <Image
                         src={leader.photoSrc}
                         alt={leader.photoAlt}
                         fill
-                        sizes="160px"
+                        sizes="(min-width: 1024px) 224px, (min-width: 640px) 192px, 160px"
                         className="object-cover object-top"
                       />
                     </div>

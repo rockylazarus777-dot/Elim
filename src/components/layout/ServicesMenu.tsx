@@ -137,14 +137,14 @@ export default function ServicesMenu() {
       <div
         role="menu"
         aria-label="Services menu"
-        className={`absolute right-0 top-full z-30 w-[min(640px,calc(100vw-2rem))] origin-top-right pt-3 transition-[opacity,transform,visibility] duration-200 ${
+        className={`absolute right-0 top-full z-30 w-[min(480px,calc(100vw-2rem))] origin-top-right pt-3 transition-[opacity,transform,visibility] duration-200 xl:w-[min(640px,calc(100vw-2rem))] ${
           open ? "visible translate-y-0 opacity-100" : "invisible -translate-y-1.5 opacity-0"
         }`}
       >
         <div className="rounded-2xl border border-ink-100 bg-white p-4 shadow-[0_20px_48px_-12px_rgba(10,13,16,0.18)]">
           <p className="mb-2 px-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-ink-400">Services</p>
 
-          <div className="grid grid-cols-2 gap-1 lg:grid-cols-3">
+          <div className="grid grid-cols-2 gap-1 xl:grid-cols-3">
             {serviceNavigation.map((group) => (
               <div
                 key={group.number}
@@ -212,7 +212,7 @@ export default function ServicesMenu() {
           </div>
 
           <div className="mt-2 flex items-center justify-between border-t border-ink-100 px-2 pt-3">
-            <p className="text-[0.75rem] text-ink-500">Nine service groups, one coordinated partner.</p>
+            <p className="text-[0.75rem] text-ink-500">Integrated expertise, one coordinated partner.</p>
             <Link href="/services" onClick={closeAll} className="inline-flex items-center gap-1.5 text-[0.8rem] font-semibold text-brand-700 hover:text-brand-800">
               View all services <span aria-hidden="true">→</span>
             </Link>

@@ -45,7 +45,7 @@ export default function Header() {
       <div className="container-page flex h-16 items-center justify-between">
         <Logo />
 
-        <nav aria-label="Primary" className="hidden md:block">
+        <nav aria-label="Primary" className="hidden lg:block">
           <ul className="flex items-center gap-0.5">
             {siteConfig.nav.map((item) => {
               const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
@@ -78,7 +78,7 @@ export default function Header() {
           </ul>
         </nav>
 
-        <div className="hidden items-center md:flex">
+        <div className="hidden items-center lg:flex">
           <Link
             href="/contact"
             onClick={() => trackCtaClick("Connect with Our Team", "header")}

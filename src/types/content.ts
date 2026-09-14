@@ -80,6 +80,21 @@ export interface ServiceContent {
   timeline?: { indicative: string; note: string };
   /** Scope/disclaimer callout — e.g. "EMC coordinates the process; the registration itself is issued by the relevant authority." */
   scopeNote?: string;
+  /**
+   * Grouped audience cards for the detail page's "Who We Support" section.
+   * Only needed when `whoNeedsIt` has more than ~5 entries and benefits from
+   * consolidation into broader groups (each `detail` should be built from
+   * the existing `whoNeedsIt` wording, not new content) — otherwise the
+   * section renders one card per `whoNeedsIt` entry directly.
+   */
+  audienceGroups?: { title: string; detail: string }[];
+  /**
+   * Grouped benefit cards for the detail page's "Why Does This Matter?"
+   * section. Same rule as `audienceGroups`: only needed when `whyItMatters`
+   * has more entries than reads well as individual cards; `detail` should
+   * be built from the existing `whyItMatters` wording.
+   */
+  benefitCards?: { title: string; detail: string }[];
 }
 
 /**

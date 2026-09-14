@@ -5,6 +5,7 @@ import { getServicesByFamily, getServiceHref } from "@/content/services";
 import PlaceholderNote from "@/components/shared/PlaceholderNote";
 import TrackedContactLink from "@/components/shared/TrackedContactLink";
 import Logo from "./Logo";
+import SocialLinks from "./SocialLinks";
 
 /** Footer-only curation — the Services page itself still lists all nine
  * families untouched. Picked by id (not a slice) so this stays correct even
@@ -19,9 +20,9 @@ export default function Footer() {
     <footer className="border-t border-ink-100 bg-ink-950 text-ink-200">
       <div className="container-page grid gap-10 py-14 md:grid-cols-2 lg:grid-cols-4">
         <div className="lg:col-span-1">
-          <Logo variant="dark" />
+          <Logo variant="dark" companyName="EMC Healthcare Services Pvt. Ltd." />
           <p className="mt-4 font-display text-lg font-medium tracking-tight text-[#20E0D0]">Bridging Care. Building Trust.</p>
-          <p className="mt-3 text-xs text-ink-300">Formerly known as {siteConfig.formerlyKnownAs}</p>
+          <SocialLinks />
         </div>
 
         <div>
@@ -39,6 +40,11 @@ export default function Footer() {
                 </li>
               );
             })}
+            <li>
+              <Link href="/services" className="text-ink-100 transition-colors hover:text-[#20E0D0]">
+                View All Services →
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -50,7 +56,6 @@ export default function Footer() {
               { label: "All Services", href: "/services" },
               { label: "Health at Home", href: "/services/health-at-home" },
               { label: "Clients", href: "/clients" },
-              { label: "Gallery", href: "/gallery" },
               { label: "Blog", href: "/blog" },
               { label: "Contact", href: "/contact" },
             ].map((item) => (
@@ -122,7 +127,7 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="container-page flex flex-col gap-3 py-6 text-xs text-ink-300 md:flex-row md:items-center md:justify-between">
           <p>
-            © {year} {siteConfig.legalName}. All rights reserved.
+            © {year} EMC Healthcare Services Pvt Ltd. All rights reserved.
           </p>
           <ul className="flex flex-wrap gap-x-6 gap-y-2">
             {siteConfig.footerLegal.map((item) => (

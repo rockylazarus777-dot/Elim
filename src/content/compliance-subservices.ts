@@ -1,11 +1,13 @@
 import { ComplianceSubServiceContent } from "@/types/content";
 
 /**
- * Long-form content for the six Healthcare Compliance & Licensing
- * sub-services, each rendered through the generalized ComplianceLongForm
- * component at /services/healthcare-compliance/[subslug]. "Who we support"
- * content is not duplicated here — the long-form page reads it directly
- * from the matching ServiceContent.whoNeedsIt in src/content/services.ts.
+ * Extra content for the six Healthcare Compliance & Licensing sub-services,
+ * beyond the standard ServiceContent fields — `supportStages` and
+ * `pathChoice` feed the "How EMC Supports You" section of the shared
+ * ServiceDetailBody template (src/components/services/ServiceDetailBody.tsx)
+ * at /services/healthcare-compliance/[subslug]. "Who we support" and "why it
+ * matters" are not duplicated here — that page reads them directly from the
+ * matching ServiceContent in src/content/services.ts.
  */
 export const complianceSubServices: ComplianceSubServiceContent[] = [
   {

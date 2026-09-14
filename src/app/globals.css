@@ -167,11 +167,23 @@
     transform: scale(1.045);
   }
 
-  /* Fills exactly the viewport height left over below the (in-flow, sticky) header,
-     so header + hero together are never taller than 100dvh. */
+  /* Below 768px, the hero is the dedicated 9:16 mobile video shown at its
+     native ratio (full width, height following from that ratio) rather
+     than cropped to fill the viewport. At 768px and up this reverts to the
+     original behavior: fills exactly the viewport height left over below
+     the (in-flow, sticky) header, so header + hero together are never
+     taller than 100dvh. */
   .hero-viewport-fit {
-    height: calc(100dvh - var(--navbar-h, 4rem));
-    min-height: 320px;
+    aspect-ratio: 9 / 16;
+    height: auto;
+  }
+
+  @media (min-width: 768px) {
+    .hero-viewport-fit {
+      aspect-ratio: auto;
+      height: calc(100dvh - var(--navbar-h, 4rem));
+      min-height: 320px;
+    }
   }
 }
 
