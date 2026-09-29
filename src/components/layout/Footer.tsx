@@ -12,6 +12,43 @@ import SocialLinks from "./SocialLinks";
  * if `serviceFamilies`'s order ever changes. */
 const FOOTER_SERVICE_FAMILY_IDS = ["compliance-licensing", "quality-accreditation", "marketing", "medical-camps"];
 
+const CONTACT_ICONS = {
+  phone: (
+    <path d="M5 4h4l2 5-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2Z" />
+  ),
+  email: (
+    <>
+      <rect x="3" y="5" width="18" height="14" rx="2" />
+      <path d="m3 7 9 6 9-6" />
+    </>
+  ),
+  address: (
+    <>
+      <path d="M12 21s-7-6.2-7-11.5a7 7 0 0 1 14 0C19 14.8 12 21 12 21Z" />
+      <circle cx="12" cy="9.5" r="2.5" />
+    </>
+  ),
+} as const;
+
+function ContactIcon({ type }: { type: keyof typeof CONTACT_ICONS }) {
+  return (
+    <svg
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.7"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden="true"
+      className="mt-0.5 shrink-0 text-[#20E0D0]"
+    >
+      {CONTACT_ICONS[type]}
+    </svg>
+  );
+}
+
 export default function Footer() {
   const year = new Date().getFullYear();
   const footerServiceFamilies = serviceFamilies.filter((family) => FOOTER_SERVICE_FAMILY_IDS.includes(family.id));
@@ -71,7 +108,8 @@ export default function Footer() {
         <div>
           <h2 className="text-sm font-semibold uppercase tracking-wide text-white">Contact</h2>
           <ul className="mt-4 space-y-3 text-sm text-ink-100">
-            <li>
+            <li className="flex items-start gap-3">
+              <ContactIcon type="phone" />
               {siteConfig.phone.isPlaceholder ? (
                 <PlaceholderNote>Phone number needed</PlaceholderNote>
               ) : (
@@ -86,7 +124,8 @@ export default function Footer() {
               )}
             </li>
             {!siteConfig.phoneSecondary.isPlaceholder ? (
-              <li>
+              <li className="flex items-start gap-3">
+                <ContactIcon type="phone" />
                 <TrackedContactLink
                   kind="phone"
                   href={siteConfig.phoneSecondary.href}
@@ -97,7 +136,8 @@ export default function Footer() {
                 </TrackedContactLink>
               </li>
             ) : null}
-            <li>
+            <li className="flex items-start gap-3">
+              <ContactIcon type="email" />
               {siteConfig.email.isPlaceholder ? (
                 <PlaceholderNote>Contact email needed</PlaceholderNote>
               ) : (
@@ -111,7 +151,8 @@ export default function Footer() {
                 </TrackedContactLink>
               )}
             </li>
-            <li>
+            <li className="flex items-start gap-3">
+              <ContactIcon type="address" />
               {siteConfig.address.isPlaceholder ? (
                 <PlaceholderNote>Address needed</PlaceholderNote>
               ) : (

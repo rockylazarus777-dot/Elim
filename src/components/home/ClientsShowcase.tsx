@@ -4,7 +4,7 @@ import Reveal from "@/components/shared/Reveal";
 import { getTrustedClientLogos } from "@/content/clients";
 
 /** Homepage shows a compact 14-client "featured" selection (7×2 on desktop)
- * so the section stays dense and scannable; the full roster (currently 17
+ * so the section stays dense and scannable; the full roster (currently 21
  * logos) still renders in full on /clients, which calls
  * `getTrustedClientLogos()` independently — slicing here never touches the
  * underlying data. No explicit featured-order flag exists on the data yet,
@@ -40,7 +40,10 @@ export default function ClientsShowcase() {
                   priority={index < 7}
                 />
               </div>
-              <p className="text-center text-xs font-semibold leading-snug text-ink-800">{client.name}</p>
+              <div className="text-center">
+                <p className="text-xs font-semibold leading-snug text-ink-800">{client.name}</p>
+                <p className="mt-0.5 text-[0.7rem] leading-snug text-ink-500">{client.location}</p>
+              </div>
             </article>
           </Reveal>
         ))}

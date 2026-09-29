@@ -35,7 +35,7 @@ export default function ClientsPage() {
               const isFocusLogo = client.focus;
 
               return (
-                <Reveal key={client.name} delay={index * 70} className="h-full">
+                <Reveal key={client.name} delay={(index % 4) * 70} className="h-full">
                   <article className="group h-full rounded-[1.5rem] border border-ink-100 bg-white/90 p-4 shadow-card transition-all duration-300 hover:-translate-y-1 hover:shadow-card-hover">
                     <div
                       className={`flex ${isFocusLogo ? "min-h-[210px]" : "min-h-[180px]"} items-center justify-center rounded-[1.1rem] border border-ink-100 bg-[radial-gradient(circle_at_top,_rgba(224,236,233,0.75),_rgba(255,255,255,0.9)_50%,_rgba(244,246,247,0.9))] p-6`}
@@ -52,7 +52,8 @@ export default function ClientsPage() {
                       />
                     </div>
                     <div className="mt-4 text-center">
-                      <p className="text-sm font-semibold leading-relaxed text-ink-700">{client.name}</p>
+                      <h2 className="text-sm font-semibold leading-relaxed text-ink-800">{client.name}</h2>
+                      <p className="mt-1 text-xs leading-relaxed text-ink-500">{client.location}</p>
                     </div>
                   </article>
                 </Reveal>
