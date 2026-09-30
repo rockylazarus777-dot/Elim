@@ -4,6 +4,7 @@ import { Fraunces, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import PublicOnly from "@/components/layout/PublicOnly";
 import { JsonLd, organizationSchema, websiteSchema } from "@/components/seo/JsonLd";
 import { siteConfig } from "@/lib/site-config";
 import Analytics, { GtmNoScript } from "@/components/shared/Analytics";
@@ -69,21 +70,28 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en-IN" className={`${fraunces.variable} ${plexSans.variable}`}>
       <body>
         {/* GTM noscript fallback — must be immediately after the opening <body> tag per Google's install instructions. */}
-        <GtmNoScript />
+        {/* <PublicOnly> keeps the public site's chrome and analytics off the staff-only /admin area. */}
+        <PublicOnly>
+          <GtmNoScript />
+        </PublicOnly>
         <JsonLd data={organizationSchema()} />
         <JsonLd data={websiteSchema()} />
         <a href="#main-content" className="skip-link">
           Skip to main content
         </a>
-        <Header />
+        <PublicOnly>
+          <Header />
+        </PublicOnly>
         <main id="main-content">{children}</main>
-        <Footer />
-        <WhatsAppButton />
-        <ChatbotWidget />
-        <Analytics />
-        <Suspense fallback={null}>
-          <RouteTracker />
-        </Suspense>
+        <PublicOnly>
+          <Footer />
+          <WhatsAppButton />
+          <ChatbotWidget />
+          <Analytics />
+          <Suspense fallback={null}>
+            <RouteTracker />
+          </Suspense>
+        </PublicOnly>
       </body>
     </html>
   );

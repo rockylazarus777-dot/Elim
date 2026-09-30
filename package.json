@@ -10,19 +10,24 @@
     "lint": "next lint",
     "typecheck": "tsc --noEmit",
     "remotion:studio": "remotion studio remotion/src/index.ts",
-    "remotion:render": "remotion render remotion/src/index.ts HeroIntro remotion/out/hero-intro.mp4"
+    "remotion:render": "remotion render remotion/src/index.ts HeroIntro remotion/out/hero-intro.mp4",
+    "test": "vitest run"
   },
   "dependencies": {
     "@remotion/cli": "^4.0.521",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.117.2",
     "next": "14.2.35",
     "nodemailer": "^10.0.3",
     "react": "18.3.1",
     "react-dom": "18.3.1",
     "remotion": "^4.0.521",
+    "server-only": "^0.0.1",
     "sharp": "^0.35.4",
     "zod": "3.23.8"
   },
   "devDependencies": {
+    "@electric-sql/pglite": "^0.3.16",
     "@types/node": "20.14.2",
     "@types/nodemailer": "^8.0.1",
     "@types/react": "18.3.3",
@@ -32,9 +37,10 @@
     "eslint-config-next": "14.2.35",
     "postcss": "8.4.38",
     "tailwindcss": "3.4.4",
-    "typescript": "5.4.5"
+    "typescript": "5.4.5",
+    "vitest": "^3.2.7"
   },
   "engines": {
-    "node": ">=18.18.0"
+    "node": ">=22.0.0"
   }
 }

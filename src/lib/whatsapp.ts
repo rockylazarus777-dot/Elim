@@ -36,23 +36,39 @@ export class WhatsAppApiError extends Error {
   }
 }
 
+/** A VIDEO header's media: a public HTTPS MP4 URL, or an uploaded media ID (expires after ~30 days). */
+export type TemplateHeaderVideo = { link: string } | { id: string };
+
+type TemplateComponent =
+  | { type: "header"; parameters: { type: "video"; video: TemplateHeaderVideo }[] }
+  | { type: "body"; parameters: { type: "text"; text: string; parameter_name?: string }[] };
+
 /**
  * Sends one approved WhatsApp template message via the Graph API.
  * `languageCode` must exactly match the language code shown for this
  * template in WhatsApp Manager (Meta Business Suite) — commonly "en" for a
  * template created as plain "English", but verify before the first send;
  * a mismatch returns a "template not found" error from Meta, not a crash.
+ *
+ * Body variables: pass `bodyParams` for a POSITIONAL template ({{1}}, {{2}}…)
+ * or `namedBodyParams` for a NAMED one ({{customer_name}}) — never both.
+ * `headerVideo` is required by templates with a VIDEO header. Static buttons
+ * need no parameters. With none of these, no `components` are sent at all.
  */
 export async function sendWhatsAppTemplate({
   to,
   templateName,
   languageCode,
   bodyParams = [],
+  namedBodyParams = {},
+  headerVideo,
 }: {
   to: string;
   templateName: string;
   languageCode: string;
   bodyParams?: string[];
+  namedBodyParams?: Record<string, string>;
+  headerVideo?: TemplateHeaderVideo;
 }): Promise<{ messageId?: string }> {
   const accessToken = process.env.WHATSAPP_ACCESS_TOKEN;
   const phoneNumberId = process.env.WHATSAPP_PHONE_NUMBER_ID;
@@ -63,7 +79,25 @@ export async function sendWhatsAppTemplate({
     );
   }
 
+  const namedEntries = Object.entries(namedBodyParams);
+  if (namedEntries.length > 0 && bodyParams.length > 0) {
+    throw new WhatsAppApiError("A template's body parameters are either positional or named, not both.");
+  }
+
   const url = `${GRAPH_API_BASE}/${GRAPH_API_VERSION}/${phoneNumberId}/messages`;
+
+  const components: TemplateComponent[] = [];
+  if (headerVideo) {
+    components.push({ type: "header", parameters: [{ type: "video", video: headerVideo }] });
+  }
+  if (namedEntries.length > 0) {
+    components.push({
+      type: "body",
+      parameters: namedEntries.map(([parameter_name, text]) => ({ type: "text", parameter_name, text })),
+    });
+  } else if (bodyParams.length > 0) {
+    components.push({ type: "body", parameters: bodyParams.map((text) => ({ type: "text", text })) });
+  }
 
   const requestBody = {
     messaging_product: "whatsapp",
@@ -73,16 +107,7 @@ export async function sendWhatsAppTemplate({
     template: {
       name: templateName,
       language: { code: languageCode },
-      ...(bodyParams.length > 0
-        ? {
-            components: [
-              {
-                type: "body",
-                parameters: bodyParams.map((text) => ({ type: "text", text })),
-              },
-            ],
-          }
-        : {}),
+      ...(components.length > 0 ? { components } : {}),
     },
   };
 
